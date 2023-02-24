@@ -7,15 +7,25 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import HeaderOption from './HeaderOption';
+import { useDispatch, useSelector } from 'react-redux';
+import { auth } from './firebase';
+import { logout } from './features/userSlice';
 
 export default function Header() {
+  const dispatch = useDispatch();
+
+  const logoutofApp = () =>{
+    dispatch(logout())
+    auth.signOut();
+
+  };
   return (
     <div className='header'>
         <div className="header__left">
             <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="" />
             <div className="header__search">
                 <SearchIcon/>
-                <input type="text" name="" id="" />
+                <input type="text" name="" id="" placeholder='Search' />
                 
             </div>
         </div>
@@ -25,7 +35,7 @@ export default function Header() {
             <HeaderOption Icon={BusinessCenterIcon} title="Jobs"/> 
             <HeaderOption Icon={ChatIcon} title="Messaging"/> 
             <HeaderOption Icon={NotificationsIcon} title="Notifications"/> 
-            <HeaderOption avatar="https://media.licdn.com/dms/image/D5635AQHMzBYL_jK6HA/profile-framedphoto-shrink_100_100/0/1675328542391?e=1677816000&v=beta&t=V3oZz_j5uZjivo1YC0sLl370GpP8k4miUylwjDox2fA" title="me"/> 
+            <HeaderOption title="me" onClick={logoutofApp} avatar={true}/> 
 
         </div>
    
