@@ -37,8 +37,7 @@ function Sidebar() {
                 {rectentItem("nodejs")}
                 {rectentItem("mongodb")}
                 {rectentItem("express")}
-                
-
+        
             </div>
     </div>
   )
